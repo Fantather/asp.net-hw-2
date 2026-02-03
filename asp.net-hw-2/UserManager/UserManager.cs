@@ -7,6 +7,20 @@ namespace asp.net_hw_2.UserManager
         private readonly List<User> _users = new();
         public IReadOnlyList<User> GetAll() => _users.AsReadOnly();
 
+        public UserManager()
+        {
+            var random = new Random();
+            string[] cities = { "Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург", "Казань" };
+
+            for (int i = 1; i <= 25; i++)
+            {
+                string city = cities[random.Next(cities.Length)];
+                int age = random.Next(18, 60);
+
+                _users.Add(new User($"Пользователь_{i}", city, age));
+            }
+        }
+
         public User[] GetPage(int page, bool sortByName = false, bool sortByAge = false)
         {
             if(page < 1)
