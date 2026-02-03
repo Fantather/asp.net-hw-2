@@ -103,8 +103,8 @@ app.Run(async (HttpContext context) =>
 // === Методы управления ===
 async Task SendUsersPage(HttpRequest request, HttpResponse response)
 {
-    bool sortByName = Convert.ToBoolean(request.Query["name"]);
-    bool sortByAge = Convert.ToBoolean(request.Query["age"]);
+    bool sortByName = Convert.ToBoolean(request.Query["sortByName"]);
+    bool sortByAge = Convert.ToBoolean(request.Query["sortByAge"]);
     int page = Convert.ToInt32(request.Query["page"]);
 
     User[] result = userManager.GetPage(page, sortByName, sortByAge);
